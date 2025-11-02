@@ -1,0 +1,35 @@
+﻿# Dependencies
+node_modules/
+*/node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+frontend/.env*
+backend/.env*
+backend/.env
+*/.env
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# React Native/Expo
+.expo/
+.expo-shared/
+web-build/
+
+# Backend
+uploads/
+temp/
+*.db
