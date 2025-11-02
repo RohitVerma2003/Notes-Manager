@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { Alert } from "react-native";
 
 const NotesContext = createContext();
 
@@ -33,6 +34,7 @@ export const NotesProvider = ({ children }) => {
                 },
             });
             setNotes((prev) => prev.filter((note) => note._id !== id))
+            Alert.alert("Note Deleted...")
         } catch (error) {
             console.log("Error deleting note:", error);
         }
@@ -50,6 +52,7 @@ export const NotesProvider = ({ children }) => {
             });
             const newNote = await response.json();
             setNotes((prev) => [newNote.note, ...prev]);
+            Alert.alert("Note Added...")
         } catch (error) {
             console.log("Error adding note:", error);
         }
@@ -71,6 +74,7 @@ export const NotesProvider = ({ children }) => {
                     note._id === id ? newNote.note : note
                 )
             );
+            Alert.alert("Note Updated...")
         } catch (error) {
             console.log("Error adding note:", error);
         }
@@ -86,6 +90,7 @@ export const NotesProvider = ({ children }) => {
                 },
             });
             fetchNotes();
+            Alert.alert("Note Pinned Toggle...")
         } catch (error) {
             console.log("Error adding note:", error);
         }

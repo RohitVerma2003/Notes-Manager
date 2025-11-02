@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
 import { useNotes } from '@/context/NotesContext'
+import { useRouter } from 'expo-router'
 
 const AddNotes = () => {
-  const { addNote } = useNotes();
+  const { addNote } = useNotes()
+  const router = useRouter();
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -11,6 +13,7 @@ const AddNotes = () => {
   const handleSubmit = async () => {
     if (title.trim() && content.trim()) {
       await addNote({ title: title.trim(), content: content.trim() })
+      router.back();
       setTitle('')
       setContent('')
     }
